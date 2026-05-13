@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>墨醉 · 茶酒吧 | MoZui Tea Cocktail Bar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #0a0a12;
+    --tea: #2d5a47;
+    --gold: #c9a84c;
+    --gold-light: #e4d5a8;
+    --text: #e0ddd5;
+    --text-dim: #8a8780;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--ink);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,10,18,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  nav .inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 70px;
+  }
+  nav .logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--gold); letter-spacing: 0.15em;
+  }
+  nav .logo span { color: var(--tea); }
+  nav a {
+    color: var(--text-dim); text-decoration: none;
+    margin-left: 2rem; font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--ink) 0%, #111822 50%, #0d1518 100%);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero .overlay {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=1600&q=80') center/cover no-repeat;
+    opacity: 0.18; mix-blend-mode: soft-light;
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 1200px;
+    margin: 0 auto; padding: 0 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: var(--gold); line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--tea); }
+  .hero .subtitle {
+    font-size: 1.3rem; color: var(--text-dim);
+    letter-spacing: 0.3em; margin-bottom: 2.5rem;
+  }
+  .hero .cta {
+    display: inline-block; padding: 1rem 2.5rem;
+    border: 1.5px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 0.2em; transition: all 0.3s;
+  }
+  .hero .cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* Sections */
+  section { padding: 6rem 2rem; }
+  section .container { max-width: 1200px; margin: 0 auto; }
+  section h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.2rem; color: var(--gold);
+    text-align: center; margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+  section .section-sub {
+    text-align: center; color: var(--text-dim);
+    margin-bottom: 3rem; font-size: 0.95rem;
+  }
+
+  /* Concept */
+  .concept-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .concept-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2.5rem 2rem; text-align: center;
+    transition: all 0.3s;
+  }
+  .concept-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+  .concept-card .icon {
+    font-size: 2.5rem; margin-bottom: 1rem;
+  }
+  .concept-card h3 {
+    color: var(--tea); margin-bottom: 0.8rem;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .concept-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+  /* Gallery */
+  .gallery { background: #0d0d18; }
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .gallery-grid img {
+    width: 100%; height: 250px; object-fit: cover;
+    transition: opacity 0.3s;
+  }
+  .gallery-grid img:hover { opacity: 0.8; }
+
+  /* Menu */
+  .menu-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+  .menu-item {
+    display: flex; justify-content: space-between;
+    border-bottom: 1px dotted rgba(201,168,76,0.2);
+    padding-bottom: 1rem;
+  }
+  .menu-item .name { color: var(--text); font-size: 1.1rem; }
+  .menu-item .name small { display: block; color: var(--text-dim); font-size: 0.85rem; margin-top: 0.3rem; }
+  .menu-item .price { color: var(--gold); font-family: 'Noto Serif TC', serif; white-space: nowrap; }
+
+  /* Contact */
+  .contact-info {
+    text-align: center; max-width: 500px; margin: 0 auto;
+  }
+  .contact-info p {
+    color: var(--text-dim); margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .contact-info .highlight { color: var(--gold); }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 3rem 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    color: var(--text-dim); font-size: 0.85rem;
+  }
+  footer .logo { color: var(--gold); font-family: 'Noto Serif TC', serif; font-size: 1.2rem; }
+
+  @media (max-width: 768px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .menu-grid { grid-template-columns: 1fr; }
+    nav a { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">墨<span>·</span>醉</div>
+    <div>
+      <a href="#concept">理念</a>
+      <a href="#menu">茶酒單</a>
+      <a href="#gallery">印象</a>
+      <a href="#contact">預約</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>以茶入酒<br><span>醉墨成詩</span></h1>
+    <p class="subtitle">TEA COCKTAIL · BAR</p>
+    <a href="#contact" class="cta">預約席位</a>
+  </div>
+</section>
+
+<section id="concept">
+  <div class="container">
+    <h2>品牌理念</h2>
+    <p class="section-sub">將千年茶道融入現代調酒工藝</p>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="icon">🍵</div>
+        <h3>茶韻基底</h3>
+        <p>嚴選台灣高山茶、雲南普洱、日本抹茶等頂級茶葉，手工冷萃保留純淨茶韻，作為每杯調酒的靈魂基底。</p>
+      </div>
+      <div class="concept-card">
+        <div class="icon">🍸</div>
+        <h3>調酒工藝</h3>
+        <p>結合經典調酒技法與現代分子料理，將茶香與酒體完美融合，創造前所未有的風味層次。</p>
+      </div>
+      <div class="concept-card">
+        <div class="icon">🌿</div>
+        <h3>草本療癒</h3>
+        <p>融入桂花、枸杞、菊花、薑黃等草本元素，每杯調酒不只愉悅味蕾，更帶來身心療癒的體驗。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <h2>空間印象</h2>
+    <p class="section-sub">沉浸在墨色與茶香交織的空間</p>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80" alt="調酒師" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="茶調酒" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1556745753-b2904692b3cd?w=600&q=80" alt="調酒工藝" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80" alt="草本茶" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <h2>茶酒單</h2>
+    <p class="section-sub">每杯作品都是茶與酒的對話</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="name">墨醉金萱 <small>金萱烏龍 · 琴酒 · 桂花蜜 · 檸檬</small></div>
+        <div class="price">NT$420</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">普洱煙燻 <small>陳年普洱 · 威士忌 · 煙燻龍眼 · 苦精</small></div>
+        <div class="price">NT$480</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">抹茶朝露 <small>宇治抹茶 · 伏特加 · 椰子 · 香草</small></div>
+        <div class="price">NT$400</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">鐵觀音老時尚 <small>鐵觀音 · 波本 · 橙皮 · 黑糖</small></div>
+        <div class="price">NT$450</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">東方美人酸 <small>東方美人茶 · 白蘭地 · 蜂蜜 · 蛋白霜</small></div>
+        <div class="price">NT$430</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">桂花馬丁尼 <small>桂花烏龍 · 琴酒 · 茉莉花 · 苦艾酒</small></div>
+        <div class="price">NT$420</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">日月潭紅韻 <small>紅玉紅茶 · 蘭姆酒 · 肉桂 · 鳳梨</small></div>
+        <div class="price">NT$400</div>
+      </div>
+      <div class="menu-item">
+        <div class="name">枸杞薑療 <small>枸杞菊花茶 · 伏特加 · 薑汁 · 蜂蜜</small></div>
+        <div class="price">NT$380</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#0d0d18;">
+  <div class="container">
+    <h2>預約資訊</h2>
+    <p class="section-sub">在墨色之中，品味茶酒的詩意</p>
+    <div class="contact-info">
+      <p>📍 <span class="highlight">台北市大安區敦化南路一段 177 號</span></p>
+      <p>🕐 週一至週六 <span class="highlight">18:00 – 02:00</span>（週日公休）</p>
+      <p>📞 <span class="highlight">(02) 2771-0827</span></p>
+      <p>📧 <span class="highlight">reserve@mozui.bar</span></p>
+      <p style="margin-top:1.5rem;color:var(--text-dim);">※ 建議提前三日預約，吧檯座位限 12 席</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="margin-bottom:0.5rem;">墨醉</div>
+  <p>© 2026 墨醉 MoZui Tea Cocktail Bar. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
